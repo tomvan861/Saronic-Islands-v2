@@ -24,7 +24,7 @@
     /* text */
     --ink:#0B2536;
     --ink-soft:#4F6B7D;
-    --ink-faint:#8AA3B3;
+    --ink-faint:#506B7C;
     --on-dark:#ffffff;
 
     /* status colors */
@@ -32,10 +32,10 @@
     --good:#1E9E6B;
 
     /* per-weekday route colors (page 1 day chips) */
-    --day-sun:#E08A3C;
-    --day-mon:#1E9E6B;
-    --day-tue:#D4B43C;
-    --day-wed:#D9608F;
+    --day-sun:#E17514;
+    --day-mon:#169864;
+    --day-tue:#9F800F;
+    --day-wed:#CD2868;
     --day-thu:#8B5FBF;
     --day-fri:#0077B6;
 
@@ -174,7 +174,7 @@
     flex:1;
     display:flex;
     flex-direction:column;
-    padding: 0 20px calc(110px + env(safe-area-inset-bottom, 0px));
+    padding: 0 20px calc(70px + env(safe-area-inset-bottom, 0px));
   }
 
   /* Hero photo */
@@ -280,50 +280,39 @@
   /* ---------- BOTTOM NAV ---------- */
   .bottomnav{
     position:fixed;
-    left:16px;
-    right:16px;
-    bottom: calc(env(safe-area-inset-bottom, 0px) + 16px);
-    max-width:528px;
-    margin:0 auto;
+    left:50%;
+    transform: translateX(-50%);
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 18px);
     z-index:1000;
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:22px;
-    padding: 14px;
+    padding: 10px 16px;
     background: var(--card);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border:1px solid rgba(255,255,255,0.5);
-    border-radius:24px;
+    border-radius:999px;
     box-shadow: var(--shadow);
   }
-  .nav-arrow{
-    width:60px;
-    height:48px;
-    border-radius:16px;
+  .nav-dots{
     display:flex;
     align-items:center;
-    justify-content:center;
-    background: transparent;
-    border:none;
-    color: var(--navy);
+    gap:8px;
+  }
+  .nav-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background: rgba(7,40,63,0.18);
     cursor:pointer;
-    transition: transform 220ms ease, opacity 220ms ease, background 220ms ease;
+    transition: all 220ms ease;
   }
-  .nav-arrow:hover{ transform: translateY(-2px); background: rgba(0,119,182,0.1); }
-  .nav-arrow svg{ width:22px; height:22px; }
-  .nav-arrow:active{ transform: translateY(1px); }
-  .nav-arrow[disabled]{ opacity:0.3; pointer-events:none; }
-  .nav-counter{
-    font-family:'JetBrains Mono', monospace;
-    font-size:15px;
-    font-weight:500;
-    color: var(--ink-soft);
-    min-width:48px;
-    text-align:center;
+  .nav-dot.active{
+    width:22px;
+    border-radius:5px;
+    background: var(--turquoise);
   }
-
   /* ---------- LIGHTBOX ---------- */
   .lightbox{
     position:fixed;
@@ -644,8 +633,7 @@
           </div>
         </div>
 
-        <h1 class="page-title">מסלול הפלגה</h1>
-        <p class="page-subtitle">לחצו על יום לתאריך הרלוונטי. לחצו על התמונה להגדלה.</p>
+        <p class="page-subtitle" style="margin-top:24px;">לחצו על יום לתאריך הרלוונטי. לחצו על התמונה להגדלה.</p>
 
         <div class="day-selector" id="daySelector"></div>
 
@@ -821,14 +809,8 @@
 
   </div>
 
-  <div class="bottomnav">
-    <button class="nav-arrow" id="prevBtn" title="חזרה" disabled>
-      <i data-lucide="chevron-right"></i>
-    </button>
-    <span class="nav-counter" id="navCounter">1 / 4</span>
-    <button class="nav-arrow" id="nextBtn" title="הבא">
-      <i data-lucide="chevron-left"></i>
-    </button>
+  <div class="bottomnav" id="bottomnav">
+    <div class="nav-dots" id="navDots"></div>
   </div>
 
   <div class="lightbox" id="lightbox">
@@ -945,10 +927,15 @@
   const total = pages.length;
   let current = 0;
 
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const navCounter = document.getElementById('navCounter');
   const pageIndicator = document.getElementById('pageIndicator');
+  const navDots = document.getElementById('navDots');
+
+  for(let i=0;i<total;i++){
+    const dot = document.createElement('div');
+    dot.className = 'nav-dot' + (i===0 ? ' active' : '');
+    dot.addEventListener('click', ()=> goTo(i));
+    navDots.appendChild(dot);
+  }
 
   function goTo(idx){
     if(idx < 0 || idx >= total || idx === current) return;
@@ -962,15 +949,9 @@
     pages[current].classList.add('active');
     pages[current].scrollTop = 0;
 
-    const label = `${current+1} / ${total}`;
-    navCounter.textContent = label;
-    pageIndicator.textContent = label;
-    prevBtn.disabled = current === 0;
-    nextBtn.disabled = current === total-1;
+    pageIndicator.textContent = `${current+1} / ${total}`;
+    navDots.querySelectorAll('.nav-dot').forEach((d,i)=> d.classList.toggle('active', i===current));
   }
-
-  prevBtn.addEventListener('click', ()=> goTo(current-1));
-  nextBtn.addEventListener('click', ()=> goTo(current+1));
 
   // Swipe support
   let touchStartX = null;
