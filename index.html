@@ -30,7 +30,7 @@
   --shadow:0 20px 60px rgba(0,0,0,0.12);
   --radius:28px;--radius2:18px;--radius3:14px;
 }
-body{font-family:'Heebo',Arial,sans-serif;background:var(--panel3);color:var(--text);min-height:100vh;overflow-x:hidden}
+body{font-family:'Heebo',Arial,sans-serif;background:var(--panel3);color:var(--text);min-height:100vh;overflow-x:hidden;overscroll-behavior-y:contain}
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   background:radial-gradient(ellipse 70% 35% at 15% 0%,rgba(0,180,216,0.14),transparent),
              radial-gradient(ellipse 60% 30% at 100% 10%,rgba(144,224,239,0.10),transparent)}
@@ -45,7 +45,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .sidebar{width:256px;flex-shrink:0;background:var(--panel);border-left:1px solid var(--border2);
   display:flex;flex-direction:column;position:fixed;top:0;right:0;bottom:0;z-index:100;
   -webkit-transition:transform .3s cubic-bezier(.4,0,.2,1);transition:transform .3s cubic-bezier(.4,0,.2,1);
-  overflow-y:auto;-webkit-overflow-scrolling:touch}
+  overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
 .main{margin-right:256px;flex:1;padding:28px 24px 60px}
 
 /* SIDEBAR */
@@ -58,7 +58,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:var(--radius3);font-size:13px;color:var(--text2);cursor:pointer;-webkit-transition:background .15s,color .15s;transition:background .15s,color .15s;border:none;background:none;width:100%;text-align:right;font-family:inherit;-webkit-appearance:none}
 .nav-item:hover,.nav-item:active{background:rgba(255,255,255,0.07);color:var(--text)}
 .nav-item.active{background:rgba(0,180,216,0.12);color:var(--accent2);font-weight:500}
-.sidebar-tl{padding:10px 12px;flex:1;overflow-y:auto;min-height:0;-webkit-overflow-scrolling:touch}
+.sidebar-tl{padding:10px 12px;flex:1;overflow-y:auto;min-height:0;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
 .tl-title{font-size:10px;font-weight:600;color:var(--text3);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
 .tl-item{display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:1px solid var(--border2);cursor:pointer}
 .tl-item:last-child{border-bottom:none}
