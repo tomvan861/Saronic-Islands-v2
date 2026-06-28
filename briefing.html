@@ -71,7 +71,7 @@
     max-width:560px;
     margin:0 auto;
     width:100%;
-    background: linear-gradient(180deg, var(--navy) 0%, #0A4761 40%, var(--bg) 100%);
+    background: linear-gradient(180deg, var(--navy) 0%, #0A4761 20%, var(--bg) 45%);
     overflow:hidden;
   }
   @media (min-width: 561px){
@@ -237,45 +237,36 @@
     font-size:36px;
     font-weight:700;
     line-height:1.18;
-    color: var(--on-dark);
+    color: var(--navy);
     margin: 24px 0 6px;
     letter-spacing:-0.01em;
-    text-shadow: 0 2px 16px rgba(0,0,0,0.15);
   }
   .page-subtitle{
     font-size:15px;
     font-weight:400;
-    color: rgba(255,255,255,0.75);
+    color: var(--ink-soft);
     line-height:1.5;
     margin: 0 0 16px;
   }
 
   /* Card */
-  .glass-card{
-    background: var(--card);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border:1px solid rgba(255,255,255,0.5);
-    border-top: 4px solid var(--turquoise);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding:24px 22px;
-    transition: transform 220ms ease, box-shadow 220ms ease;
-  }
-  .glass-card:hover{
-    transform: translateY(-4px);
-    box-shadow: 0 28px 70px rgba(0,0,0,0.14);
-  }
-  .card-title{
-    font-size:18px;
-    font-weight:700;
-    color: var(--navy);
-    margin:0 0 12px;
+  .section-label{
+    font-size:13px;
+    font-weight:600;
+    color: var(--ocean);
+    margin:0 0 10px;
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:7px;
+    letter-spacing:0.02em;
   }
-  .card-title svg{ width:18px; height:18px; color: var(--ocean); flex-shrink:0; }
+  .section-label svg{ width:16px; height:16px; flex-shrink:0; }
+  .section-block{ display:flex; flex-direction:column; }
+  .section-divider-full{
+    height:1px;
+    background: var(--line);
+    margin:20px 0;
+  }
 
   /* ---------- BOTTOM NAV ---------- */
   .bottomnav{
@@ -430,10 +421,9 @@
     gap:10px;
     font-size:19px;
     font-weight:700;
-    color: var(--on-dark);
-    text-shadow: 0 1px 8px rgba(0,0,0,0.1);
+    color: var(--navy);
   }
-  .route-line .arrow{ color: var(--seafoam); font-size:17px; }
+  .route-line .arrow{ color: var(--turquoise); font-size:17px; }
 
   /* ---------- PAGE 2: COSTS ---------- */
   .cost-row{
@@ -506,22 +496,18 @@
   .insurance-note .it{ font-size:12.5px; color: var(--ink); line-height:1.5; }
   .insurance-note .it b{ color: var(--navy); }
 
-  .wallet-card{
-    margin-top:14px;
-    background: linear-gradient(135deg, var(--navy), var(--ocean));
-    border-radius: var(--radius-sm);
-    padding:18px;
-    color: var(--on-dark);
-    text-align:center;
+  .wallet-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:4px 2px;
+    color: var(--navy);
     font-size:17px;
-    font-weight:700;
-    box-shadow: var(--shadow-sm);
-    transition: transform 220ms ease, box-shadow 220ms ease;
+    font-weight:600;
   }
-  .wallet-card:hover{
-    transform: translateY(-4px);
-    box-shadow: var(--shadow);
-  }
+  .wallet-row-label{ display:flex; align-items:center; gap:10px; }
+  .wallet-row-label svg{ width:20px; height:20px; color: var(--ocean); }
+  .wallet-row-chevron{ width:18px; height:18px; color: var(--ink-faint); }
 
   /* ---------- PAGE 3: TIMELINE ---------- */
   .timeline{
@@ -535,7 +521,7 @@
     top:8px;
     bottom:8px;
     width:2px;
-    background: rgba(255,255,255,0.25);
+    background: var(--line);
   }
   .tl-item{ position:relative; padding-bottom:18px; }
   .tl-item:last-child{ padding-bottom:0; }
@@ -551,8 +537,8 @@
     border:2.5px solid var(--ocean);
   }
   .tl-item.depart::before{ background: var(--turquoise); border-color: var(--turquoise); }
-  .tl-title{ font-size:15px; font-weight:700; color: var(--on-dark); line-height:1.35; text-shadow: 0 1px 8px rgba(0,0,0,0.12); }
-  .tl-desc{ font-size:12.5px; color: rgba(255,255,255,0.7); margin-top:3px; line-height:1.45; }
+  .tl-title{ font-size:15px; font-weight:700; color: var(--navy); line-height:1.35; }
+  .tl-desc{ font-size:12.5px; color: var(--ink-soft); margin-top:3px; line-height:1.45; }
 
   .timeline-open{ margin-top:14px; padding-inline-start:30px; }
   .timeline-open::before{ inset-inline-start:11px; }
@@ -567,44 +553,37 @@
   .timeline-open .tl-title{ font-size:18px; }
   .timeline-open .tl-desc{ font-size:13.5px; margin-top:5px; }
 
-  /* ---------- PAGE 4: TOPIC CARDS ---------- */
+  /* ---------- PAGE 4: TOPIC LIST (Section-based, no cards) ---------- */
   .topic-list{
     display:flex;
     flex-direction:column;
-    gap:14px;
   }
-  .topic-card{
-    background: var(--card-solid);
-    border:1px solid var(--line);
-    border-top: 4px solid var(--turquoise);
-    border-radius: var(--radius-sm);
-    padding:18px 18px;
+  .topic-row{
     display:flex;
     align-items:center;
     gap:16px;
-    transition: transform 220ms ease, box-shadow 220ms ease;
+    padding:16px 2px;
+    border-bottom:1px solid var(--line);
+    transition: opacity 220ms ease;
   }
-  .topic-card:hover{
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-sm);
+  .topic-row:last-child{ border-bottom:none; }
+  .topic-row svg{
+    width:24px; height:24px; color: var(--ocean); flex-shrink:0;
   }
-  .topic-card svg{
-    width:32px; height:32px; color: var(--ocean); flex-shrink:0;
-  }
-  .topic-card .ti-label{ font-size:16px; font-weight:700; color: var(--navy); line-height:1.3; flex:1; }
-  .topic-card.has-image{ cursor:pointer; position:relative; }
-  .topic-card.has-image:active{ transform: translateY(-2px); box-shadow: var(--shadow-sm); }
-  .topic-card.has-image .zoom-badge{
+  .topic-row .ti-label{ font-size:16px; font-weight:500; color: var(--navy); line-height:1.3; flex:1; }
+  .topic-row.has-image{ cursor:pointer; }
+  .topic-row.has-image:active{ opacity:0.6; }
+  .topic-row.has-image .zoom-badge{
     color: var(--ink-faint);
     flex-shrink:0;
+    display:flex;
   }
-  .topic-card.has-image .zoom-badge svg{ width:14px; height:14px; }
+  .topic-row.has-image .zoom-badge svg{ width:18px; height:18px; }
 
   @media (max-width: 360px){
     .page-title{ font-size:30px; }
     .page-hero{ height:270px; }
-    .topic-card{ padding:15px 14px; gap:12px; }
-    .topic-card .ti-label{ font-size:14.5px; }
+    .topic-row .ti-label{ font-size:14.5px; }
   }
 </style>
 </head>
@@ -652,12 +631,12 @@
 
         <h1 class="page-title">עלויות</h1>
 
-        <div class="glass-card">
-          <div class="card-title">
-            <i data-lucide="euro"></i>
-            פירוט
-          </div>
+        <div class="section-label">
+          <i data-lucide="euro"></i>
+          פירוט
+        </div>
 
+        <div class="section-block">
           <div class="cost-row paid">
             <div>
               <div class="item">Price</div>
@@ -708,14 +687,21 @@
             <div class="item">סה״כ</div>
             <div class="amount">€10,910</div>
           </div>
-
-          <div class="insurance-note">
-            <i data-lucide="shield"></i>
-            <div class="it"><b>ביטוח:</b> כיסוי הנזקים (€1,500) מחליף את הפיקדון — אין תשלום ביטוח נוסף בנפרד.</div>
-          </div>
         </div>
 
-        <div class="wallet-card">ארנק משותף</div>
+        <div class="section-divider-full"></div>
+
+        <div class="insurance-note">
+          <i data-lucide="shield"></i>
+          <div class="it"><b>ביטוח:</b> כיסוי הנזקים (€1,500) מחליף את הפיקדון — אין תשלום ביטוח נוסף בנפרד.</div>
+        </div>
+
+        <div class="section-divider-full"></div>
+
+        <div class="wallet-row">
+          <span class="wallet-row-label"><i data-lucide="wallet"></i> ארנק משותף</span>
+          <i data-lucide="chevron-left" class="wallet-row-chevron"></i>
+        </div>
       </div>
     </section>
 
@@ -769,39 +755,39 @@
         <h1 class="page-title">תפעול ובטיחות</h1>
 
         <div class="topic-list">
-          <div class="topic-card">
+          <div class="topic-row">
             <i data-lucide="life-buoy"></i>
             <span class="ti-label">חגורות וציוד הצלה</span>
           </div>
-          <div class="topic-card">
+          <div class="topic-row">
             <i data-lucide="link"></i>
             <span class="ti-label">עבודת חבלים</span>
           </div>
-          <div class="topic-card">
+          <div class="topic-row">
             <i data-lucide="wind"></i>
             <span class="ti-label">רייטינג</span>
           </div>
-          <div class="topic-card">
+          <div class="topic-row">
             <i data-lucide="waves"></i>
             <span class="ti-label">ציוד וחבלים במים</span>
           </div>
-          <div class="topic-card">
+          <div class="topic-row">
             <i data-lucide="person-standing"></i>
             <span class="ti-label">שחייה</span>
           </div>
-          <div class="topic-card has-image" data-img="images/switch.jpg" data-label="לחצן הפעלת אסלה">
+          <div class="topic-row has-image" data-img="images/switch.jpg" data-label="לחצן הפעלת אסלה">
             <i data-lucide="toilet"></i>
             <span class="ti-label">אסלות</span>
-            <span class="zoom-badge"><i data-lucide="zoom-in"></i></span>
+            <span class="zoom-badge"><i data-lucide="chevron-left"></i></span>
           </div>
-          <div class="topic-card">
+          <div class="topic-row">
             <i data-lucide="recycle"></i>
             <span class="ti-label">מכלי ביוב</span>
           </div>
-          <div class="topic-card has-image" data-img="images/plan.jpg,images/plan2.jpg" data-label="תוכנית הסיפון — BALI 4.6">
+          <div class="topic-row has-image" data-img="images/plan.jpg,images/plan2.jpg" data-label="תוכנית הסיפון — BALI 4.6">
             <i data-lucide="ship"></i>
             <span class="ti-label">BALI 4.6 — תוכנית הסיפון</span>
-            <span class="zoom-badge"><i data-lucide="zoom-in"></i></span>
+            <span class="zoom-badge"><i data-lucide="chevron-left"></i></span>
           </div>
         </div>
       </div>
@@ -916,7 +902,7 @@
   document.getElementById('routeHero').addEventListener('click', ()=>{
     openLightbox(routeImage.src, routeImage.alt);
   });
-  document.querySelectorAll('.topic-card.has-image').forEach(card=>{
+  document.querySelectorAll('.topic-row.has-image').forEach(card=>{
     card.addEventListener('click', ()=>{
       openLightbox(card.dataset.img, card.dataset.label || '');
     });

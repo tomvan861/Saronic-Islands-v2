@@ -35,8 +35,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   background:radial-gradient(ellipse 70% 35% at 15% 0%,rgba(0,180,216,0.14),transparent),
              radial-gradient(ellipse 60% 30% at 100% 10%,rgba(144,224,239,0.10),transparent)}
 
-/* Glass surfaces: every card-like panel gets the frosted-glass treatment */
-.sidebar,.kpi-card,.weather-strip,.map-section,.filters-panel,.leg-card,.side-card,.empty,.mobile-topbar{
+/* Glass surfaces: every remaining card-like panel gets the frosted-glass treatment */
+.sidebar,.map-section,.filters-panel,.empty,.mobile-topbar{
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
 }
 
@@ -108,7 +108,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .kpi-sub{font-size:11px;color:var(--text3);margin-top:3px}
 
 /* WEATHER */
-.weather-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:20px 18px;margin-bottom:8px}
+.weather-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding:4px 0 14px;margin-bottom:8px}
+.section-divider-h{height:1px;background:var(--border2);margin:24px 0}
 .weather-day{text-align:center}
 .weather-date{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;font-weight:600}
 .weather-icon{font-size:34px;margin-bottom:6px;line-height:1}
@@ -150,29 +151,30 @@ select:focus,input:focus{border-color:var(--accent)}
 
 /* RESULTS */
 .results-count{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
-.results{display:flex;flex-direction:column;gap:10px}
+.results{display:flex;flex-direction:column}
 .day-header{display:flex;align-items:center;gap:10px;padding:12px 0 6px;border-bottom:1px solid var(--border);margin-top:8px}
 .day-header:first-child{margin-top:0}
 .day-badge{background:var(--turquoise);border:none;color:#fff;font-size:11px;font-weight:700;padding:4px 13px;border-radius:999px;box-shadow:0 4px 12px rgba(0,180,216,0.3)}
 .day-name{font-size:12px;font-weight:500;color:var(--text2);text-transform:uppercase;letter-spacing:.5px}
 .day-dist{font-size:11px;color:var(--text3);margin-right:auto}
-.leg-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius2);padding:15px 17px;border-right:3px solid transparent;-webkit-transition:border-color .2s,-webkit-transform .2s;transition:border-color .2s,transform .2s}
-.leg-card:hover{border-color:var(--border2);-webkit-transform:translateY(-2px);transform:translateY(-2px)}
-.leg-card.leg{border-right-color:var(--accent)}
-.leg-card.spot{border-right-color:var(--amber)}
+.leg-section{padding:18px 4px 18px 16px;border-right:3px solid transparent;border-bottom:1px solid var(--border2)}
+.leg-section:last-child{border-bottom:none}
+.leg-section.leg{border-right-color:var(--accent)}
+.leg-section.spot{border-right-color:var(--amber)}
 .leg-top{display:flex;align-items:center;gap:10px;margin-bottom:11px}
 .leg-badge{font-size:11px;font-weight:600;padding:4px 11px;border-radius:999px}
 .leg-badge.leg-type{background:rgba(0,180,216,0.1);color:var(--accent2);border:1px solid rgba(0,180,216,0.2)}
 .leg-badge.spot-type{background:rgba(224,138,60,0.1);color:var(--amber);border:1px solid rgba(224,138,60,0.25)}
 .leg-name{font-size:14px;font-weight:700;color:var(--text);flex:1;line-height:1.3}
-.arrow-row{display:flex;align-items:center;gap:8px;background:var(--panel2);border-radius:var(--radius3);padding:8px 12px;margin-bottom:11px;font-size:13px;color:var(--text3);flex-wrap:wrap}
-.arrow-row .place{color:var(--text);font-weight:500}
-.leg-meta{display:flex;gap:18px;margin-bottom:11px;flex-wrap:wrap}
+.leg-row{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:13px;color:var(--text3);flex-wrap:wrap}
+.leg-row .place{color:var(--text);font-weight:500}
+.leg-row-arrow{color:var(--text3)}
+.leg-meta{display:flex;gap:18px;padding:6px 0;flex-wrap:wrap}
 .leg-field{font-size:13px;color:var(--text3);display:flex;align-items:center;gap:5px}
 .leg-field span{color:var(--text);font-weight:600}
-.leg-coords{font-size:11px;color:var(--text3);background:var(--panel2);border:1px solid var(--border);border-radius:var(--radius3);padding:7px 11px;font-family:monospace,Courier,sans-serif;margin-bottom:11px;display:flex;align-items:center;gap:8px}
+.leg-row-coords{font-size:11px;color:var(--text3);font-family:monospace,Courier,sans-serif}
 .coord-text{flex:1;line-height:1.4;word-break:break-all}
-.leg-actions{display:flex;gap:8px;flex-wrap:wrap}
+.leg-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
 .action-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:7px 13px;border-radius:var(--radius3);border:1px solid var(--border2);background:transparent;color:var(--text3);cursor:pointer;text-decoration:none;font-family:inherit;-webkit-appearance:none;-webkit-transition:all .15s;transition:all .15s}
 .action-btn:hover,.action-btn:active{background:var(--panel2);color:var(--text)}
 .action-btn.primary{background:rgba(0,180,216,0.1);border-color:rgba(0,180,216,0.25);color:var(--accent2)}
@@ -180,9 +182,10 @@ select:focus,input:focus{border-color:var(--accent)}
 .copy-btn{background:none;border:none;cursor:pointer;color:var(--text3);padding:2px 6px;font-size:15px;display:flex;align-items:center;font-family:inherit}
 
 /* SIDE PANEL */
-.side-panel{display:flex;flex-direction:column;gap:14px}
-.side-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:18px}
-.side-card-title{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px}
+.side-panel{display:flex;flex-direction:column}
+.side-section{padding:6px 2px}
+.section-label{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px}
+.side-divider{height:1px;background:var(--border2);margin:18px 0}
 .progress-items{display:flex;flex-direction:column;gap:9px}
 .progress-item{display:flex;align-items:center;gap:10px;font-size:12px}
 .progress-item-label{color:var(--text2);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
@@ -206,7 +209,7 @@ select:focus,input:focus{border-color:var(--accent)}
 .drawer-overlay{display:none;position:fixed;inset:0;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:200}
 .drawer-overlay.open{display:block}
 
-@media(max-width:1100px){.content-grid{grid-template-columns:1fr}.side-panel{display:grid;grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1100px){.content-grid{grid-template-columns:1fr}}
 @media(max-width:768px){
   .sidebar{-webkit-transform:translateX(100%);transform:translateX(100%)}
   .sidebar.open{-webkit-transform:translateX(0);transform:translateX(0)}
@@ -219,26 +222,20 @@ select:focus,input:focus{border-color:var(--accent)}
   .hero-nm{font-size:44px}
   .kpi-row{grid-template-columns:repeat(2,1fr)}
   .weather-strip{grid-template-columns:repeat(3,1fr)}
-  .side-panel{grid-template-columns:1fr}
   .filter-row{-webkit-flex-direction:column;flex-direction:column}
   select,input[type="text"]{min-width:unset;width:100%}
 }
 
-.flight-kpi-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
-.flight-kpi-card{background:var(--panel2);border:1px solid var(--border2);border-top:4px solid var(--turquoise);border-radius:var(--radius);padding:18px 20px;position:relative;overflow:hidden;box-shadow:0 16px 40px rgba(7,40,63,0.18)}
-.flight-kpi-card::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at top left,rgba(0,180,216,0.08),transparent 60%)}
-.fk-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.fk-icon{font-size:22px}
-.fk-title{font-size:13px;font-weight:700;color:var(--text);flex:1}
+.flight-section-row{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:24px}
+.flight-section{padding:4px 0}
+.flight-route-line{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.fk-route{font-size:15px;font-weight:700;color:var(--text);line-height:1.4}
 .fk-date{font-size:11px;color:var(--accent2);background:rgba(0,180,216,0.1);border:1px solid rgba(0,180,216,0.2);border-radius:999px;padding:2px 10px}
-.fk-route{font-size:14px;font-weight:700;color:var(--text);margin-bottom:12px;line-height:1.4}
-.fk-times{display:flex;align-items:center;gap:10px;background:var(--panel3);border-radius:var(--radius3);padding:10px 14px}
-.fk-time-item{display:flex;flex-direction:column;gap:3px}
-.fk-time-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px}
-.fk-time-val{font-size:18px;font-weight:800;color:var(--text);line-height:1}
-.fk-arrow{display:flex;align-items:center;color:var(--text3);margin:0 2px}
-.fk-arrow svg{width:22px;height:22px}
-@media(max-width:600px){.flight-kpi-row{grid-template-columns:1fr}}
+.flight-time-row{display:flex;align-items:baseline;justify-content:space-between;padding:8px 0}
+.flight-time-divider{height:1px;background:var(--border2)}
+.fk-time-label{font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px}
+.fk-time-val{font-size:20px;font-weight:800;color:var(--text);line-height:1}
+@media(max-width:600px){.flight-section-row{grid-template-columns:1fr;gap:0}.flight-section:first-child{padding-bottom:16px;border-bottom:1px solid var(--border2);margin-bottom:16px}}
 </style>
 </head>
 <body>
@@ -316,32 +313,38 @@ select:focus,input:focus{border-color:var(--accent)}
         </div>
       </div>
 
-      <!-- KPI -->
-      <div class="flight-kpi-row">
-        <div class="flight-kpi-card">
-          <div class="fk-header">
-            <span class="fk-icon">🛫</span>
-            <span class="fk-title">טיסה הלוך</span>
+      <!-- Flights (Section-based) -->
+      <div class="flight-section-row">
+        <div class="flight-section">
+          <div class="section-label">🛫 טיסה הלוך</div>
+          <div class="flight-route-line">
+            <span class="fk-route" id="flight-out-route">טוען...</span>
             <span class="fk-date" id="flight-out-date">—</span>
           </div>
-          <div class="fk-route" id="flight-out-route">טוען...</div>
-          <div class="fk-times">
-            <span class="fk-time-item"><span class="fk-time-label">המראה</span><span class="fk-time-val" id="flight-out-dep">—</span></span>
-            <span class="fk-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="11 18 5 12 11 6"/></svg></span>
-            <span class="fk-time-item"><span class="fk-time-label">נחיתה</span><span class="fk-time-val" id="flight-out-arr">—</span></span>
+          <div class="flight-time-row">
+            <span class="fk-time-label">המראה</span>
+            <span class="fk-time-val" id="flight-out-dep">—</span>
+          </div>
+          <div class="flight-time-divider"></div>
+          <div class="flight-time-row">
+            <span class="fk-time-label">נחיתה</span>
+            <span class="fk-time-val" id="flight-out-arr">—</span>
           </div>
         </div>
-        <div class="flight-kpi-card">
-          <div class="fk-header">
-            <span class="fk-icon">🛬</span>
-            <span class="fk-title">טיסה חזור</span>
+        <div class="flight-section">
+          <div class="section-label">🛬 טיסה חזור</div>
+          <div class="flight-route-line">
+            <span class="fk-route" id="flight-back-route">טוען...</span>
             <span class="fk-date" id="flight-back-date">—</span>
           </div>
-          <div class="fk-route" id="flight-back-route">טוען...</div>
-          <div class="fk-times">
-            <span class="fk-time-item"><span class="fk-time-label">המראה</span><span class="fk-time-val" id="flight-back-dep">—</span></span>
-            <span class="fk-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="11 18 5 12 11 6"/></svg></span>
-            <span class="fk-time-item"><span class="fk-time-label">נחיתה</span><span class="fk-time-val" id="flight-back-arr">—</span></span>
+          <div class="flight-time-row">
+            <span class="fk-time-label">המראה</span>
+            <span class="fk-time-val" id="flight-back-dep">—</span>
+          </div>
+          <div class="flight-time-divider"></div>
+          <div class="flight-time-row">
+            <span class="fk-time-label">נחיתה</span>
+            <span class="fk-time-val" id="flight-back-arr">—</span>
           </div>
         </div>
       </div>
@@ -352,7 +355,9 @@ select:focus,input:focus{border-color:var(--accent)}
       <span id="kpi-days-sub" style="display:none"></span>
       <span id="kpi-legs-sub" style="display:none"></span>
 
-      <!-- WEATHER — הערכה לאזור הים האיוני, לאימות בזמן אמת ב-Windy -->
+      <!-- WEATHER (Section-based) — הערכה לאזור הים האיוני, לאימות בזמן אמת ב-Windy -->
+      <div class="section-divider-h"></div>
+      <div class="section-label">תחזית</div>
       <div class="weather-strip">
         <div class="weather-day"><div class="weather-date">14/06 א'</div><div class="weather-icon">☀️</div><div class="weather-temp">28°C</div><div class="weather-wind">🌬 8–12 kn</div><div class="weather-sea">🌊 0.3m</div></div>
         <div class="weather-day"><div class="weather-date">15/06 ב'</div><div class="weather-icon">🌤️</div><div class="weather-temp">27°C</div><div class="weather-wind">🌬 10–15 kn</div><div class="weather-sea">🌊 0.5m</div></div>
@@ -361,6 +366,7 @@ select:focus,input:focus{border-color:var(--accent)}
         <div class="weather-day"><div class="weather-date">18-19/06</div><div class="weather-icon">☀️</div><div class="weather-temp">28°C</div><div class="weather-wind">🌬 8–14 kn</div><div class="weather-sea">🌊 0.4m</div></div>
       </div>
       <div class="weather-note">⚠️ הערכה לאזור הים האיוני — לאימות בזמן אמת: <a href="https://www.windy.com/?37.5,23.3,8" target="_blank">Windy</a></div>
+      <div class="section-divider-h"></div>
 
       <!-- MAP -->
       <div class="map-section" id="map-section">
@@ -413,16 +419,18 @@ select:focus,input:focus{border-color:var(--accent)}
 
         <!-- Side Panel -->
         <div class="side-panel">
-          <div class="side-card">
-            <div class="side-card-title">📊 התקדמות יומית</div>
+          <div class="side-section">
+            <div class="section-label">📊 התקדמות יומית</div>
             <div class="progress-items" id="progress-items"></div>
           </div>
-          <div class="side-card">
-            <div class="side-card-title">⏱ ETA מקטעים</div>
+          <div class="side-divider"></div>
+          <div class="side-section">
+            <div class="section-label">⏱ ETA מקטעים</div>
             <div id="eta-rows"></div>
           </div>
-          <div class="side-card">
-            <div class="side-card-title">💡 Route Intelligence</div>
+          <div class="side-divider"></div>
+          <div class="side-section">
+            <div class="section-label">💡 Route Intelligence</div>
             <div id="intel-rows"></div>
           </div>
         </div>
@@ -754,14 +762,14 @@ function applyFilters(){
       var badgeLabel=isSpot?'📍 SPOT':'⚓ '+item.leg;
       var titleName=isSpot?item.to:item.from+' → '+item.to;
 
-      html+='<div class="leg-card '+(isSpot?'spot':'leg')+'">'
+      html+='<div class="leg-section">'
         +'<div class="leg-top">'
         +'<span class="leg-badge '+(isSpot?'spot-type':'leg-type')+'">'+badgeLabel+'</span>'
         +'<span class="leg-name">'+titleName+'</span>'
         +'</div>';
 
       if(!isSpot){
-        html+='<div class="arrow-row">📍 <span class="place">'+item.from+'</span> → 📌 <span class="place">'+item.to+'</span></div>';
+        html+='<div class="leg-row">📍 <span class="place">'+item.from+'</span> <span class="leg-row-arrow">→</span> <span class="place">'+item.to+'</span></div>';
         if(item.dist||item.dur){
           html+='<div class="leg-meta">';
           if(item.dist) html+='<div class="leg-field">↔ מרחק: <span>'+item.dist+' NM</span></div>';
@@ -771,7 +779,7 @@ function applyFilters(){
       }
 
       if(displayCoords){
-        html+='<div class="leg-coords">🧭 <span class="coord-text">'+displayCoords+'</span>'
+        html+='<div class="leg-row leg-row-coords">🧭 <span class="coord-text">'+displayCoords+'</span>'
           +'<button class="copy-btn" onclick="copyText('+JSON.stringify(displayCoords)+',this)" title="העתק">⎘</button>'
           +'</div>';
       }
