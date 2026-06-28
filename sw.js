@@ -1,4 +1,4 @@
-const CACHE_NAME = "tmate-v1";
+const CACHE_NAME = "tmate-beta-v1";
 const CACHED_URLS = ["./", "./index.html"];
 
 self.addEventListener("install", event => {
